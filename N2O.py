@@ -120,7 +120,11 @@ for n in mdIndex:
         ## Make temp destination file path
         new_file_name = mdContent[0].replace('# ', '') + '.md'
         new_file_name = regexForbitCharacter.sub("", new_file_name)
-        newfilepath = tempPath / path.dirname(ObsidianPaths[n]) / new_file_name
+        
+        # Avoid "filename too long" errors.
+        formatted_file_name = new_file_name[0:255]
+
+        newfilepath = tempPath / path.dirname(ObsidianPaths[n]) / formatted_file_name
         
         # Check if file exists, append if true
         if path.exists(newfilepath):

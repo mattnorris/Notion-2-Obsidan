@@ -326,7 +326,7 @@ def N2Omd(mdFile):
 
     for line in mdFile:
 
-        line = line.decode("utf-8").rstrip()
+        line = line.decode("utf-8", errors='replace').rstrip()
 
         line, cnt = embedded_link_convert(line)
         em_link_cnt += cnt
